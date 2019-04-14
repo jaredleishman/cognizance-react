@@ -1,0 +1,51 @@
+.datepicker-date-display {
+	background-color: #fff176;
+}
+
+.datepicker-cancel {
+	color: #424242;
+}
+
+.datepicker-done {
+	color: #424242;
+}
+
+.datepicker-clear {
+	color: #ff8a65;
+}
+
+.datepicker-date-display > .year-text {
+	color: #ff8a65;
+}
+
+.date-text {
+	color: #ff8a65;
+}
+
+.is-today > .datepicker-day-button {
+	color: #ff8a65;
+}
+
+.datepicker-table td.is-selected {
+	background-color: #fff176;
+	color: #ff8a65;
+}
+
+.gImage {
+	height: 200px;
+	margin: 5px;
+}
+
+.selected-image {
+	border: 4px solid #1e88e5;	
+}
+
+.editor {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.btn {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
