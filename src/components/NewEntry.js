@@ -102,7 +102,7 @@ class NewEntry extends Component {
 			let nextPageToken = this.state.nextPageToken
 			axios({
 				method: 'post',
-				url: 'https://quiet-tor-97113.herokuapp.com/auth/google/mediaitem',
+				url: 'https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems',
 				withCredentials: true,
 				data: nextPageToken,
 				config: { headers: {'Content-Type': 'text/plain'}}
