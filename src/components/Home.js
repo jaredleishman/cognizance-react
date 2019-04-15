@@ -29,7 +29,7 @@ class Home extends Component {
                 let dateString = `${d.toLocaleString('en-us', {month: 'long'})} ${d.getDate()}, ${d.getFullYear()}`
                 return (
                     <div className="row" key={entry.id}>
-                    <div className="col s6">
+                    <div className="col s6 offset-s3">
                       <div className="card">
                         <div className="card-image">
                             <img src={entry.images !== null ? entry.images[0] : ""} alt=""/>
