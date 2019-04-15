@@ -100,12 +100,16 @@ class NewEntry extends Component {
 			scrollWidth   = elem.scrollWidth
 		if(Math.floor(scrollWidth - newScrollLeft) === width) {
 			let nextPageToken = this.state.nextPageToken
-			axios.post("https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems",
-				{ nextPageToken: nextPageToken },
-				{ headers: {'Content-Type': 'text/plain'} })
-				.then((response) => {
-					this.setState({ mediaItems: [...this.state.mediaItems, ...response.data.mediaItems], nextPageToken: response.data.nextPageToken })					
-				})
+			axios({
+				method: 'post',
+				url: 'https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems',
+				withCredentials: true,
+				data: nextPageToken,
+				config: { headers: {'Content-Type': 'text/plain'}}
+			})
+			.then((response) => {
+				this.setState({ mediaItems: [...this.state.mediaItems, ...response.data.mediaItems], nextPageToken: response.data.nextPageToken })					
+			})
 		}
 	}
 
