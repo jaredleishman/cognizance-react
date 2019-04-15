@@ -45,7 +45,7 @@ class NewEntry extends Component {
 			.then((response) => {
 				this.setState({ loggedIn: response.data.loggedIn })
 				if(response.data.loggedIn) {
-					axios.get("https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems")
+					axios.get("https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems", {withCredentials: true})
 					.then((r) => {
 						this.setState({ mediaItems: r.data.mediaItems, nextPageToken: r.data.nextPageToken })
 					})
