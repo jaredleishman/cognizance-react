@@ -104,7 +104,9 @@ class NewEntry extends Component {
 				method: 'post',
 				url: 'https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems',
 				withCredentials: true,
-				data: nextPageToken,
+				data: {
+					nextPageToken: nextPageToken
+				},
 				config: { headers: {'Content-Type': 'text/plain'}}
 			})
 			.then((response) => {
