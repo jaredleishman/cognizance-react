@@ -100,7 +100,7 @@ class NewEntry extends Component {
 			scrollWidth   = elem.scrollWidth
 		if(Math.floor(scrollWidth - newScrollLeft) === width) {
 			let nextPageToken = this.state.nextPageToken
-			axios.post("https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems", {withCredentials: true},
+			axios.post("https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems",
 				{ nextPageToken: nextPageToken },
 				{ headers: {'Content-Type': 'text/plain'} })
 				.then((response) => {
