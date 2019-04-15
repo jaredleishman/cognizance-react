@@ -24,6 +24,16 @@ class NewEntry extends Component {
 		this.onScrollEnd = this.onScrollEnd.bind(this);
 	}
 
+	componentWillMount() {
+		axios.get("https://quiet-tor-97113.herokuapp.com/cookie")
+		.then((response) => {
+			console.log(response)
+		})
+		.catch(error => {
+			this.props.history.push('/login')
+		})
+	}
+
 	componentDidMount() {
 		var elem = document.querySelector('.datepicker');
 		M.Datepicker.init(elem, { showClearBtn: true, onSelect: this.onDateSelect, defaultDate: new Date(), maxDate: new Date() })
