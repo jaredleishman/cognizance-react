@@ -25,7 +25,7 @@ class NewEntry extends Component {
 	}
 
 	componentWillMount() {
-		axios.get("https://quiet-tor-97113.herokuapp.com/cookie")
+		axios.get("https://quiet-tor-97113.herokuapp.com/cookie", {withCredentials: true})
 		.then((response) => {
 			console.log(response)
 		})
