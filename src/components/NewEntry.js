@@ -94,6 +94,7 @@ class NewEntry extends Component {
 				{ nextPageToken: nextPageToken },
 				{ headers: {'Content-Type': 'text/plain'} })
 				.then((response) => {
+					console.log(response)
 					this.setState({ mediaItems: [...this.state.mediaItems, ...response.data.mediaItems], nextPageToken: response.data.nextPageToken })					
 				})
 		}
