@@ -24,6 +24,16 @@ class NewEntry extends Component {
 		this.onScrollEnd = this.onScrollEnd.bind(this);
 	}
 
+	componentWillMount() {
+		axios.get("https://quiet-tor-97113.herokuapp.com/cookie", {withCredentials: true})
+		.then((response) => {
+			console.log(response)
+		})
+		.catch(error => {
+			this.props.history.push('/login')
+		})
+	}
+
 	componentDidMount() {
 		var elem = document.querySelector('.datepicker');
 		M.Datepicker.init(elem, { showClearBtn: true, onSelect: this.onDateSelect, defaultDate: new Date(), maxDate: new Date() })
@@ -35,7 +45,7 @@ class NewEntry extends Component {
 			.then((response) => {
 				this.setState({ loggedIn: response.data.loggedIn })
 				if(response.data.loggedIn) {
-					axios.get("https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems")
+					axios.get("https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems", {withCredentials: true})
 					.then((r) => {
 						this.setState({ mediaItems: r.data.mediaItems, nextPageToken: r.data.nextPageToken })
 					})
@@ -90,13 +100,18 @@ class NewEntry extends Component {
 			scrollWidth   = elem.scrollWidth
 		if(Math.floor(scrollWidth - newScrollLeft) === width) {
 			let nextPageToken = this.state.nextPageToken
-			axios.post("https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems", 
-				{ nextPageToken: nextPageToken },
-				{ headers: {'Content-Type': 'text/plain'} })
-				.then((response) => {
-					console.log(response)
-					this.setState({ mediaItems: [...this.state.mediaItems, ...response.data.mediaItems], nextPageToken: response.data.nextPageToken })					
-				})
+			axios({
+				method: 'post',
+				url: 'https://quiet-tor-97113.herokuapp.com/auth/google/mediaitems',
+				withCredentials: true,
+				data: {
+					nextPageToken: nextPageToken
+				},
+				config: { headers: {'Content-Type': 'text/plain'}}
+			})
+			.then((response) => {
+				this.setState({ mediaItems: [...this.state.mediaItems, ...response.data.mediaItems], nextPageToken: response.data.nextPageToken })					
+			})
 		}
 	}
 
